@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Study | Педагогика</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #4f46e5;
+      --primary-soft: #eef2ff;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --warning-bg: #fff7ed;
+      --warning-border: #fed7aa;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .app {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      border-radius: 24px;
+      padding: 24px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 27px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 15px;
+      opacity: 0.92;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .info-card span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .info-card strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .notice {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .notice strong {
+      color: #9a3412;
+    }
+
+    .section-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .section-panel h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .section-btn {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.35;
+      transition: 0.2s ease;
+      min-height: 78px;
+    }
+
+    .section-btn span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .section-btn strong {
+      display: block;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .section-btn:hover,
+    .section-btn.active {
+      background: var(--primary-soft);
+      border-color: #c7d2fe;
+      color: #312e81;
+      transform: translateY(-1px);
+    }
+
+    .section-btn.active strong {
+      color: #312e81;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .book-card,
+    .chapter-card,
+    .quiz-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .book-card {
+      padding: 18px;
+    }
+
+    .book-card h2 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .book-card p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .source-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      color: #3730a3;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .chapter-header {
+      padding: 17px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #fbfbff;
+    }
+
+    .chapter-header h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .chapter-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .important {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .important h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .important ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .important li {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .match-box {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #f9fafb;
+    }
+
+    .match-box h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: #374151;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .quiz-card {
+      padding: 16px 18px;
+    }
+
+    .quiz-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .quiz-title h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .quiz-count {
+      flex: 0 0 auto;
+      background: var(--primary-soft);
+      color: #3730a3;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .question {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+
+    .question h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 10px 11px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.15s ease;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .option:hover {
+      background: #f9fafb;
+    }
+
+    .option input {
+      margin-top: 3px;
+      flex: 0 0 auto;
+    }
+
+    .option.correct {
+      background: var(--success-bg);
+      border-color: #86efac;
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .option.wrong {
+      background: var(--danger-bg);
+      border-color: #fecaca;
+      color: #7f1d1d;
+    }
+
+    .explanation {
+      display: none;
+      margin-top: 10px;
+      padding: 11px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .explanation strong {
+      color: #111827;
+    }
+
+    .source {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px dashed #d1d5db;
+      padding-top: 8px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 11px 15px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.95);
+    }
+
+    .btn-soft {
+      background: var(--primary-soft);
+      color: #3730a3;
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 12px;
+      padding: 13px;
+      border-radius: 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #14532d;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .section-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-grid,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 23px;
+      }
+
+      .quiz-title {
+        flex-direction: column;
+      }
+
+      .quiz-count {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="hero">
+      <div class="hero-badge">Магистратураға дайындық • Педагогика</div>
+      <h1>№7 әдебиет: Lesson Study</h1>
+      <p>
+        Пит Дадлидің «Lesson Study: нұсқаулық» еңбегі бойынша дайындық тесттері.
+        Материал кітапшаның нақты бөлімдері негізінде құрастырылды.
+      </p>
+    </section>
+
+    <section class="top-grid">
+      <div class="info-card">
+        <span>Әдебиет</span>
+        <strong>№7 әдебиет</strong>
+      </div>
+      <div class="info-card">
+        <span>Автор</span>
+        <strong>Пит Дадли</strong>
+      </div>
+      <div class="info-card">
+        <span>Формат</span>
+        <strong>5 нұсқа • 1 дұрыс жауап</strong>
+      </div>
+    </section>
+
+    <div class="notice">
+      <strong>Ескерту:</strong>
+      ресми КТ нұсқасындағы 30 сұрақ — емтихан форматы.
+      Бұл дайындық сайтында сұрақ саны бөлімнің мазмұны мен спецификацияға сәйкес келетін ұғымдар көлеміне қарай беріледі.
+    </div>
+
+    <section class="section-panel">
+      <h2>Lesson Study: нұсқаулық бөлімдері</h2>
+      <div class="section-grid">
+        <button class="section-btn active" data-target="chapter-1" onclick="showSection('chapter-1')">
+          <span>Кіріспе</span>
+          <strong>Lesson Study мәні</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-2" onclick="showSection('chapter-2')">
+          <span>1-бөлім</span>
+          <strong>Мақсаты</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-3" onclick="showSection('chapter-3')">
+          <span>2-бөлім</span>
+          <strong>Lesson Study жүргізу</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-4" onclick="showSection('chapter-4')">
+          <span>3–4-бөлім</span>
+          <strong>Жоспарлау және оқушылар</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-5" onclick="showSection('chapter-5')">
+          <span>5-бөлім</span>
+          <strong>Бірінші Lesson Study өткізу</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-6" onclick="showSection('chapter-6')">
+          <span>6-бөлім</span>
+          <strong>Оқушылар пікірін білу</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-7" onclick="showSection('chapter-7')">
+          <span>7-бөлім</span>
+          <strong>Сабақтан кейінгі талқылау</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-8" onclick="showSection('chapter-8')">
+          <span>8-бөлім</span>
+          <strong>Нәтижені таныстыру</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-9" onclick="showSection('chapter-9')">
+          <span>9-бөлім</span>
+          <strong>Уақыт және мектеп бағдарламасы</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-10" onclick="showSection('chapter-10')">
+          <span>10-бөлім</span>
+          <strong>Кәсіптік оқыту және коучинг</strong>
+        </button>
+        <button class="section-btn" data-target="chapter-11" onclick="showSection('chapter-11')">
+          <span>Қорытынды</span>
+          <strong>Аралас тест</strong>
+        </button>
+      </div>
+    </section>
+
+    <main class="content">
+      <section class="book-card">
+        <h2>№7 әдебиет</h2>
+        <p>
+          Пит Дадли. Lesson Study: нұсқаулық. Кембридж, 2011.
+        </p>
+        <p>
+          Бұл сайтта Lesson Study тәсілінің мәні, жүргізу кезеңдері, бақылаудағы оқушылармен жұмыс,
+          сабақтан кейінгі талқылау, нәтижені тарату және кәсіби оқытуды дамыту бағыттары қамтылады.
+        </p>
+        <div class="source-line">Дереккөз: №7 әдебиет • Lesson Study: нұсқаулық</div>
+      </section>
+
+      <section id="chapter-1" class="chapter-section">
+        <div class="chapter-card">
+          <div class="chapter-header">
+            <h2>Кіріспе</h2>
+            <p>Lesson Study тәсілінің мәні және қолданылу аясы</p>
+          </div>
+
+          <div class="important">
+            <h3>Маңызды тұстар</h3>
+            <ul>
+              <li>Lesson Study — оқыту мен оқу үдерісін жетілдіруге арналған педагогикалық тәсіл.</li>
+              <li>Бұл тәсіл мұғалім тәжірибесі саласындағы білімді дамытуға бағытталған.</li>
+              <li>Lesson Study сабақтағы іс-әрекеттегі зерттеудің ерекше үлгісі ретінде сипатталады.</li>
+              <li>Lesson Study мұғалімдердің бірлесіп жоспарлау, бақылау, талдау және тәжірибені тарату әрекеттеріне негізделеді.</li>
+            </ul>
+          </div>
+
+          <div class="match-box">
+            <h3>Спецификациямен сәйкестігі</h3>
+            <div class="tag-list">
+              <span class="tag">Педагогтың үздіксіз кәсіби өсуі</span>
+              <span class="tag">Педагогикалық зерттеу әдістері</span>
+              <span class="tag">Тұтас педагогикалық үдеріс</span>
+              <span class="tag">Дидактика</span>
+              <span class="tag">Мұғалімнің кәсіби құзыреттілігі</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" data-quiz="quiz-1">
+          <div class="quiz-title">
+            <h3>Тест 1. Lesson Study тәсілінің жалпы мәні</h3>
+            <span class="quiz-count">10 сұрақ</span>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>1. Пит Дадлидің нұсқаулығында Lesson Study қандай мақсатта қолданылатын тәсіл ретінде сипатталады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q1" value="A"> A) мектеп құжаттарын рәсімдеу тәртібін біріздендіру үшін</label>
+              <label class="option"><input type="radio" name="q1" value="B"> B) оқу кабинеттерін материалдық жабдықтау жоспарын нақтылау үшін</label>
+              <label class="option"><input type="radio" name="q1" value="C"> C) оқыту мен оқу үдерісін жетілдіру және дамыту үшін</label>
+              <label class="option"><input type="radio" name="q1" value="D"> D) педагогтердің әкімшілік міндеттерін бөлу жүйесін өзгерту үшін</label>
+              <label class="option"><input type="radio" name="q1" value="E"> E) мектептің сыртқы есеп беру форматын толықтыру үшін</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Нұсқаулықта Lesson Study оқыту мен оқу үдерісін жетілдіру және дамыту мақсатында қолданылатын тәсіл ретінде берілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>2. Lesson Study мұғалім тәжірибесі саласында қандай білімді жетілдіруге бағытталады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q2" value="A"> A) сабақтағы оқыту тәжірибесі туралы кәсіби білімді</label>
+              <label class="option"><input type="radio" name="q2" value="B"> B) мектеп ғимаратын басқару туралы техникалық білімді</label>
+              <label class="option"><input type="radio" name="q2" value="C"> C) ресми хат алмасу және мұрағат жүргізу білімін</label>
+              <label class="option"><input type="radio" name="q2" value="D"> D) қаржылық жоспарлау және сатып алу білімін</label>
+              <label class="option"><input type="radio" name="q2" value="E"> E) оқулықтарды сыртқы сараптау тәртібі туралы білімді</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Lesson Study мұғалім тәжірибесі саласындағы білімді жетілдіруге бағытталған педагогикалық тәсіл ретінде анықталады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>3. Lesson Study қандай зерттеу үлгісі ретінде сипатталады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q3" value="A"> A) мектептің басқару құрылымын сипаттайтын ұйымдастырушылық үлгі</label>
+              <label class="option"><input type="radio" name="q3" value="B"> B) оқулық мазмұнын сараптайтын мәтіндік талдау үлгісі</label>
+              <label class="option"><input type="radio" name="q3" value="C"> C) педагогикалық кеңес шешімін рәсімдейтін құжаттық үлгі</label>
+              <label class="option"><input type="radio" name="q3" value="D"> D) сабақтағы іс-әрекеттегі зерттеудің ерекше үлгісі</label>
+              <label class="option"><input type="radio" name="q3" value="E"> E) пәндік олимпиада нәтижесін салыстыратын бағалау үлгісі</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Нұсқаулықта Lesson Study сабақтағы іс-әрекеттегі зерттеудің ерекше үлгісі болып табылатын педагогикалық тәсіл ретінде түсіндіріледі.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>4. Lesson Study тарихи тұрғыдан қай елде бастау алған тәсіл ретінде көрсетіледі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q4" value="A"> A) Финляндияда</label>
+              <label class="option"><input type="radio" name="q4" value="B"> B) Жапонияда</label>
+              <label class="option"><input type="radio" name="q4" value="C"> C) Канадада</label>
+              <label class="option"><input type="radio" name="q4" value="D"> D) Швецияда</label>
+              <label class="option"><input type="radio" name="q4" value="E"> E) Ұлыбританияда</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Нұсқаулықта Lesson Study ХІХ ғасырдың 70-жылдарында Жапонияда бастау алғаны көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>5. Lesson Study үдерісіне кімдер қатысады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q5" value="A"> A) оқу құралдарын басып шығаруға жауапты редакторлар тобы</label>
+              <label class="option"><input type="radio" name="q5" value="B"> B) мектептің шаруашылық қызметін үйлестіретін қызметкерлер тобы</label>
+              <label class="option"><input type="radio" name="q5" value="C"> C) оқушылардың құжаттарын қабылдайтын қабылдау комиссиясы</label>
+              <label class="option"><input type="radio" name="q5" value="D"> D) білім беру ұйымының қаржылық есебін қарайтын комиссия</label>
+              <label class="option"><input type="radio" name="q5" value="E"> E) сабақты бірлесіп жоспарлап, өткізетін, қадағалайтын және талдайтын мұғалімдер тобы</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Lesson Study-ге шараны бірлесе жоспарлап, өткізетін, қадағалайтын, оқыту мен оқуды талдайтын мұғалімдер тобы қатысады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>6. Lesson Study циклін өткізу барысында мұғалімдер қандай әрекет жасайды?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q6" value="A"> A) сынып кестесін сыртқы бақылау талаптарына бейімдейді</label>
+              <label class="option"><input type="radio" name="q6" value="B"> B) оқу жылы бойынша барлық есептерді қайта топтастырады</label>
+              <label class="option"><input type="radio" name="q6" value="C"> C) оқыту тәжірибесіне жаңа әдістер енгізеді немесе оны жетілдіреді</label>
+              <label class="option"><input type="radio" name="q6" value="D"> D) пәндік кабинеттердің жабдықталу нормаларын салыстырады</label>
+              <label class="option"><input type="radio" name="q6" value="E"> E) оқулықтардың таралымы мен жеткізілу кестесін тексереді</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Lesson Study циклінде мұғалімдер оқыту тәжірибесіне жаңа әдістер енгізеді немесе қолданыстағы әдісті жетілдіреді.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>7. Lesson Study нәтижелері әріптестерге қалай таратылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q7" value="A"> A) ашық Lesson Study өткізу немесе жұмыс сипатталған құжатты жариялау арқылы</label>
+              <label class="option"><input type="radio" name="q7" value="B"> B) оқу кабинеттерін қайта бөлу және сабақ кестесін бекіту арқылы</label>
+              <label class="option"><input type="radio" name="q7" value="C"> C) оқулықтар тізімін толықтыру және кітапхана қорын жаңарту арқылы</label>
+              <label class="option"><input type="radio" name="q7" value="D"> D) мектептің қаржылық жоспарын талдау және есеп дайындау арқылы</label>
+              <label class="option"><input type="radio" name="q7" value="E"> E) сыртқы тексеріс қорытындысын әкімшілік кеңесте жариялау арқылы</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Нұсқаулықта тәжірибе ашық Lesson Study өткізу немесе жұмыс сипатталған құжатты жариялау арқылы әріптестерге таратылатыны көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>8. Lesson Study бастауыш және орта мектептерде қандай мақсатта табысты қолданылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q8" value="A"> A) сынып журналын жүргізу тәртібін оңтайландыру мақсатында</label>
+              <label class="option"><input type="radio" name="q8" value="B"> B) оқу ғимаратының техникалық паспортына өзгеріс енгізу мақсатында</label>
+              <label class="option"><input type="radio" name="q8" value="C"> C) мектептің штаттық кестесін қайта бөлу мақсатында</label>
+              <label class="option"><input type="radio" name="q8" value="D"> D) оқушылардың білім деңгейін көтеру және оқыту әдістемесін жетілдіру мақсатында</label>
+              <label class="option"><input type="radio" name="q8" value="E"> E) сыртқы құжат айналымын жеделдету және есептілікті қысқарту мақсатында</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Lesson Study бастауыш және орта мектептерде оқушылардың білім деңгейін көтеру және оқыту әдістемесін жетілдіру мақсатында қолданылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>9. Lesson Study барысында мұғалімдер не үшін үш «бақылаудағы оқушыны» анықтайды?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q9" value="A"> A) оқушылардың сабаққа қатысу журналын бөлек жүргізу үшін</label>
+              <label class="option"><input type="radio" name="q9" value="B"> B) сыныптағы жоғары, орта және төмен деңгейдегі оқушы топтарын шынайы көрсету үшін</label>
+              <label class="option"><input type="radio" name="q9" value="C"> C) пәндік олимпиадаға қатысатын оқушыларды алдын ала бөлу үшін</label>
+              <label class="option"><input type="radio" name="q9" value="D"> D) сабақ соңында барлық оқушыға бірдей баға қою үшін</label>
+              <label class="option"><input type="radio" name="q9" value="E"> E) ата-аналар жиналысында оқушыларды салыстыру үшін</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Үш бақылаудағы оқушы сыныптағы белгілі бір топтың өкілі болуы қажет: жоғары, орта және төмен оқу үлгерімі бар оқушылардан таңдалады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>10. Lesson Study аяқталғаннан кейін бақылаудағы оқушылармен қандай әрекет жасалады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q10" value="A"> A) олардың пәндік дәптерлері сыртқы сараптамаға жіберіледі</label>
+              <label class="option"><input type="radio" name="q10" value="B"> B) олардың сабақ кестесі келесі тоқсанға жеке бекітіледі</label>
+              <label class="option"><input type="radio" name="q10" value="C"> C) олардың оқу құралдары бөлек есепке алынады</label>
+              <label class="option"><input type="radio" name="q10" value="D"> D) олардың бағалары педагогикалық кеңесте салыстырылады</label>
+              <label class="option"><input type="radio" name="q10" value="E"> E) олардың Lesson Study туралы ойларын білу үшін сұхбат жүргізіледі</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Нұсқаулықта бақылаудағы оқушылардың Lesson Study туралы ойларын білу үшін олармен сұхбаттасу қажеттігі көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" onclick="checkQuiz('quiz-1')">Нәтижені көрсету</button>
+            <button class="btn btn-soft" onclick="resetQuiz('quiz-1')">Қайта белгілеу</button>
+          </div>
+          <div class="result-box" id="result-quiz-1"></div>
+        </div>
+      </section>
+            <section id="chapter-2" class="chapter-section" style="display:none;">
+        <div class="chapter-card">
+          <div class="chapter-header">
+            <h2>1-бөлім</h2>
+            <p>Lesson Study-ді қандай мақсатпен жүргізу қажет?</p>
+          </div>
+
+          <div class="important">
+            <h3>Маңызды тұстар</h3>
+            <ul>
+              <li>Lesson Study балалардың білім алғандығы туралы нақты әрі жан-жақты дәлел көруге мүмкіндік береді.</li>
+              <li>Мұғалімнің ойындағы күтілетін жағдай мен сабақтағы шынайы жағдай арасындағы айырмашылықты көруге көмектеседі.</li>
+              <li>Оқушылардың қажеттіліктеріне сай оқытуды қалай жоспарлау керектігін түсінуге жағдай жасайды.</li>
+              <li>Lesson Study мұғалімдердің кәсіби дамуына және желілік қоғамдастықта бірлесіп білім алуына ықпал етеді.</li>
+            </ul>
+          </div>
+
+          <div class="match-box">
+            <h3>Спецификациямен сәйкестігі</h3>
+            <div class="tag-list">
+              <span class="tag">Педагогтың үздіксіз кәсіби өсуі</span>
+              <span class="tag">Педагогикалық рефлексия</span>
+              <span class="tag">Коммуникативтік құзыреттілік</span>
+              <span class="tag">Педагогикалық зерттеу</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" data-quiz="quiz-2">
+          <div class="quiz-title">
+            <h3>Тест 2. Lesson Study жүргізудің мақсаты</h3>
+            <span class="quiz-count">10 сұрақ</span>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>1. Lesson Study мұғалімге балалардың білім алғандығы туралы қандай дәлел көруге мүмкіндік береді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q11" value="A"> A) сабаққа қатысу туралы жалпы мәліметті</label>
+              <label class="option"><input type="radio" name="q11" value="B"> B) анық, әртүрлі қырынан және егжей-тегжейлі дәлелді</label>
+              <label class="option"><input type="radio" name="q11" value="C"> C) тоқсан соңындағы жиынтық көрсеткішті</label>
+              <label class="option"><input type="radio" name="q11" value="D"> D) сыныптың орташа үлгерім деңгейін</label>
+              <label class="option"><input type="radio" name="q11" value="E"> E) оқу жоспарының орындалу қарқынын</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Нұсқаулықта Lesson Study балалардың білім алғандығының анағұрлым анық, әртүрлі қырларынан және егжей-тегжейлі дәлелін көруге көмектесетіні көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>2. Lesson Study мұғалімге қандай айырмашылықты көруге мүмкіндік береді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q12" value="A"> A) оқу жоспары мен сабақ кестесінің айырмашылығын</label>
+              <label class="option"><input type="radio" name="q12" value="B"> B) сынып журналы мен бақылау парағының айырмашылығын</label>
+              <label class="option"><input type="radio" name="q12" value="C"> C) пән мазмұны мен оқу құралдарының айырмашылығын</label>
+              <label class="option"><input type="radio" name="q12" value="D"> D) мұғалім күткен жағдай мен сабақтағы шынайы жағдайдың айырмашылығын</label>
+              <label class="option"><input type="radio" name="q12" value="E"> E) тоқсандық баға мен жылдық бағаның айырмашылығын</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Lesson Study мұғалімнің ойынша сабақта не болуға тиіс екенін және шындығында жағдайдың қандай екенін салыстырып көруге мүмкіндік береді.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>3. Lesson Study оқытуды жоспарлау тұрғысынан мұғалімге нені түсінуге көмектеседі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q13" value="A"> A) оқушылардың қажеттіліктерін қанағаттандыратындай оқытуды қалай жоспарлау керектігін</label>
+              <label class="option"><input type="radio" name="q13" value="B"> B) сабақ кестесін сынып бөлмелеріне қалай сәйкестендіру керектігін</label>
+              <label class="option"><input type="radio" name="q13" value="C"> C) оқу тоқсанының құжаттарын қалай реттеу керектігін</label>
+              <label class="option"><input type="radio" name="q13" value="D"> D) пәндік кабинеттердің жабдықтарын қалай бөлу керектігін</label>
+              <label class="option"><input type="radio" name="q13" value="E"> E) мектепішілік бақылау кестесін қалай бекіту керектігін</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Lesson Study оқыту нәтижесінде оқушылардың қажеттіліктерін барынша қанағаттандыратындай жоспарлауды түсінуге көмектеседі.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>4. Lesson Study мұғалімдердің қандай қоғамдастығы аясында жүзеге аса алады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q14" value="A"> A) әдістемелік құжаттарды жинақтайтын жұмыс тобы аясында</label>
+              <label class="option"><input type="radio" name="q14" value="B"> B) мектептің материалдық қорын есепке алатын комиссия аясында</label>
+              <label class="option"><input type="radio" name="q14" value="C"> C) оқушыларға білім алуға көмектесуді және мұғалімдердің кәсіби дамуын көздейтін желілік қоғамдастық аясында</label>
+              <label class="option"><input type="radio" name="q14" value="D"> D) оқу кабинеттерін бөлуге арналған ұйымдастыру тобы аясында</label>
+              <label class="option"><input type="radio" name="q14" value="E"> E) қорытынды аттестаттау құжаттарын дайындайтын топ аясында</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Нұсқаулықта Lesson Study оқушыларға білім алуға көмектесу және топ мүшелерінің кәсіби дамуына ықпал ету мақсатын көздейтін мұғалімдердің желілік қоғамдастығында іске асатыны көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>5. Табысты мұғалімдердің сыныпта болып жатқанның бір бөлігін байқамауы нұсқаулықта қалай түсіндіріледі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q15" value="A"> A) олардың сабақ құрылымын жоспарламауымен</label>
+              <label class="option"><input type="radio" name="q15" value="B"> B) олардың пән мазмұнын қолданбауымен</label>
+              <label class="option"><input type="radio" name="q15" value="C"> C) олардың оқушылармен қарым-қатынас жасамауымен</label>
+              <label class="option"><input type="radio" name="q15" value="D"> D) олардың бағалау құралдарын пайдаланбауымен</label>
+              <label class="option"><input type="radio" name="q15" value="E"> E) сабақтағы ақпарат ағынын іріктеп қабылдауға көмектесетін кәсіби үдерістермен</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Автор мұны кемшілік емес, табысты болуға көмектескен үдерістердің нәтижесі деп түсіндіреді: мұғалім күрделі сабақ жағдайында маңызды ақпаратты іріктеп қабылдайды.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>6. Нұсқаулықта сыныптағы сабақ жағдайы қандай бейнемен салыстырылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q16" value="A"> A) баяу қозғалатын оқу картасымен</label>
+              <label class="option"><input type="radio" name="q16" value="B"> B) ағыны қатты өзенмен</label>
+              <label class="option"><input type="radio" name="q16" value="C"> C) реттелген зертханалық тәжірибемен</label>
+              <label class="option"><input type="radio" name="q16" value="D"> D) тыныш бақылау бөлмесімен</label>
+              <label class="option"><input type="radio" name="q16" value="E"> E) алдын ала дайындалған кестемен</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Сабақта ақпарат көп әрі жылдам пайда болғандықтан, автор оны жапондықтар айтқандай, ағыны қатты өзенге ұқсатады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>7. Мұғалімнің тәжірибелік білімі не себепті басқа әріптестерге үнемі көріне бермейді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q17" value="A"> A) ол оқу бағдарламасының мазмұнында бөлек көрсетілетіндіктен</label>
+              <label class="option"><input type="radio" name="q17" value="B"> B) ол сабақ кестесімен бірге ресми бекітілетіндіктен</label>
+              <label class="option"><input type="radio" name="q17" value="C"> C) ол пәндік оқулықтарда алдын ала жазылатындықтан</label>
+              <label class="option"><input type="radio" name="q17" value="D"> D) ол тәжірибе кезінде қалыптасып, көбіне болжамды немесе жасырын білім ретінде сақталатындықтан</label>
+              <label class="option"><input type="radio" name="q17" value="E"> E) ол оқу жетістіктерінің сандық көрсеткішімен шектелетіндіктен</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Нұсқаулықта мұғалімнің тәжірибелік білімі көбіне болжамды немесе жасырын білім болып қалатыны, оны сөзбен жеткізу қиын екені айтылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>8. Lesson Study мұғалімге қандай нәрсені аңғаруға түрткі болады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q18" value="A"> A) әдетте мән берілмейтін немесе болжамды білім ретінде сақталатын оқыту аспектілерін</label>
+              <label class="option"><input type="radio" name="q18" value="B"> B) пәндік кабинеттерді қайта орналастыруға қажетті техникалық белгілерді</label>
+              <label class="option"><input type="radio" name="q18" value="C"> C) оқу жылы соңында рәсімделетін құжаттар тобын</label>
+              <label class="option"><input type="radio" name="q18" value="D"> D) мектептің сыртқы бағалау нәтижелерін салыстыру тәсілдерін</label>
+              <label class="option"><input type="radio" name="q18" value="E"> E) оқулық мазмұнын сараптауға арналған редакциялық өлшемдерді</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Lesson Study бірлескен бақылау мен талдау арқылы мұғалім әдетте елемейтін, шеттетіп тастайтын немесе жасырын білім ретінде сақтайтын нәрселерді аңғаруға көмектеседі.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>9. Lesson Study мұғалімнің оқушыларды тануына қалай әсер етеді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q19" value="A"> A) оқушыларды тек үлгерім кестесі бойынша бөлуге мүмкіндік береді</label>
+              <label class="option"><input type="radio" name="q19" value="B"> B) оқушылардың сабаққа қатысуын сыртқы көрсеткішпен салыстырады</label>
+              <label class="option"><input type="radio" name="q19" value="C"> C) жекелеген оқушылардың қажеттіліктері мен мінез-құлқына назар аудару арқылы оларды жақсырақ тануға көмектеседі</label>
+              <label class="option"><input type="radio" name="q19" value="D"> D) оқушылардың оқу құралдарын пайдалану жиілігін анықтайды</label>
+              <label class="option"><input type="radio" name="q19" value="E"> E) оқушылардың пәндік кабинеттерге орналасуын реттейді</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Автор Lesson Study жекелеген оқушылардың оқу қажеттіліктері мен мінез-құлықтарына назар аударту арқылы әр оқушыны жақсырақ тануға мүмкіндік беретінін айтады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>10. Lesson Study тәжірибесінің негізгі сипаты қандай?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q20" value="A"> A) бір реттік бақылау және сыртқы қорытынды жасау</label>
+              <label class="option"><input type="radio" name="q20" value="B"> B) пәндік мазмұнды әкімшілік бекіту және қайта тарату</label>
+              <label class="option"><input type="radio" name="q20" value="C"> C) оқу кабинеттерінің ресурстарын салыстыру және бөлу</label>
+              <label class="option"><input type="radio" name="q20" value="D"> D) сабақ құжаттарын рәсімдеу және мұрағатқа өткізу</label>
+              <label class="option"><input type="radio" name="q20" value="E"> E) рефлексивті, қайталамалы және бірлескен тәжірибе</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Нұсқаулықта Lesson Study рефлексивті, қайталамалы және бірлескен тәжірибе ретінде сипатталады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" onclick="checkQuiz('quiz-2')">Нәтижені көрсету</button>
+            <button class="btn btn-soft" onclick="resetQuiz('quiz-2')">Қайта белгілеу</button>
+          </div>
+          <div class="result-box" id="result-quiz-2"></div>
+        </div>
+      </section>
+
+      <section id="chapter-3" class="chapter-section" style="display:none;">
+        <div class="chapter-card">
+          <div class="chapter-header">
+            <h2>2-бөлім</h2>
+            <p>Lesson Study жүргізу</p>
+          </div>
+
+          <div class="important">
+            <h3>Маңызды тұстар</h3>
+            <ul>
+              <li>Lesson Study кем дегенде үш циклден тұрады.</li>
+              <li>Сабақтарды мұғалімдер тобы бірлесіп жоспарлайды, өткізеді немесе қадағалайды және талдайды.</li>
+              <li>Топ құрамына үш мұғалімнің қатысуы қолайлы деп көрсетіледі.</li>
+              <li>Lesson Study кезінде топ мүшелерінің мәртебесі кәсіби білім алушы ретінде тең болады.</li>
+            </ul>
+          </div>
+
+          <div class="match-box">
+            <h3>Спецификациямен сәйкестігі</h3>
+            <div class="tag-list">
+              <span class="tag">Педагогикалық зерттеу әдістері</span>
+              <span class="tag">Педагогикалық қарым-қатынас</span>
+              <span class="tag">Кәсіби даму</span>
+              <span class="tag">Тұтас педагогикалық үдеріс</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-card" data-quiz="quiz-3">
+          <div class="quiz-title">
+            <h3>Тест 3. Lesson Study циклдері және ұйымдастыру</h3>
+            <span class="quiz-count">10 сұрақ</span>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>1. Нұсқаулық бойынша Lesson Study тәсілі кем дегенде неше циклден құралады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q21" value="A"> A) үш Lesson Study циклінен</label>
+              <label class="option"><input type="radio" name="q21" value="B"> B) екі бақылау кезеңінен</label>
+              <label class="option"><input type="radio" name="q21" value="C"> C) төрт бағалау отырысынан</label>
+              <label class="option"><input type="radio" name="q21" value="D"> D) бес әдістемелік талдаудан</label>
+              <label class="option"><input type="radio" name="q21" value="E"> E) алты сабақ жоспары кезеңінен</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Нұсқаулықта Lesson Study кем дегенде үш Lesson Study-ден тұратын циклден құралады деп көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>2. Lesson Study циклінде сабақтармен жұмыс қандай ретпен жүргізіледі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q22" value="A"> A) тақырып таңдау, журнал толтыру, есеп тапсыру</label>
+              <label class="option"><input type="radio" name="q22" value="B"> B) сынып бөлу, кабинет таңдау, кесте бекіту</label>
+              <label class="option"><input type="radio" name="q22" value="C"> C) бағалау парағын тарату, қорытынды қою, мұрағаттау</label>
+              <label class="option"><input type="radio" name="q22" value="D"> D) бірлесіп жоспарлау, оқыту немесе қадағалау, талдау</label>
+              <label class="option"><input type="radio" name="q22" value="E"> E) оқулық таңдау, мәтін бөлу, тапсырма жинау</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Lesson Study сабақтарды мұғалімдер тобы бірлесіп жоспарлап, оқытып немесе қадағалап, кейін талдайтын цикл ретінде беріледі.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>3. Lesson Study тобын құруда қанша мұғалім болғаны қолайлы деп көрсетіледі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q23" value="A"> A) бір мұғалім</label>
+              <label class="option"><input type="radio" name="q23" value="B"> B) екі мұғалім</label>
+              <label class="option"><input type="radio" name="q23" value="C"> C) үш мұғалім</label>
+              <label class="option"><input type="radio" name="q23" value="D"> D) бес мұғалім</label>
+              <label class="option"><input type="radio" name="q23" value="E"> E) жеті мұғалім</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Ұсынылған іс-әрекеттерде Lesson Study тобында үш адам болғаны қолайлы болатыны айтылған.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>4. Lesson Study тобының құрамына кімдердің қатысуы тиімді деп көрсетіледі?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q24" value="A"> A) кітапхана қызметкері мен техникалық маманның</label>
+              <label class="option"><input type="radio" name="q24" value="B"> B) басшылық өкілі мен бай тәжірибесі бар мұғалімнің</label>
+              <label class="option"><input type="radio" name="q24" value="C"> C) қаржы маманы мен сыртқы бақылаушының</label>
+              <label class="option"><input type="radio" name="q24" value="D"> D) ата-аналар комитеті мен оқулық сарапшысының</label>
+              <label class="option"><input type="radio" name="q24" value="E"> E) пәндік кабинет меңгерушісі мен шаруашылық қызметкердің</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Нұсқаулықта топ құрамына басшылық өкілі мен бай тәжірибесі бар мұғалім қатысса, Lesson Study тиімді болатыны көрсетілген.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>5. Lesson Study барысында топ мүшелерінің мәртебесі қалай сипатталады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q25" value="A"> A) біреуі бақылаушы, қалғандары орындаушы ретінде бөлінеді</label>
+              <label class="option"><input type="radio" name="q25" value="B"> B) тәжірибелі мұғалім негізгі шешім қабылдаушы ретінде ерекшеленеді</label>
+              <label class="option"><input type="radio" name="q25" value="C"> C) басшылық өкілі зерттеу мазмұнын жеке бекітеді</label>
+              <label class="option"><input type="radio" name="q25" value="D"> D) пән мұғалімі басқа мүшелердің ұсынысын жинақтайды</label>
+              <label class="option"><input type="radio" name="q25" value="E"> E) барлық мүшелер кәсіби білім алушы ретінде тең болады</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Lesson Study барысында топтың барлық мүшелерінің кәсіби білім алушы ретіндегі мәртебесі тең болатыны көрсетіледі.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="A">
+            <h4>6. Lesson Study енгізілетін кезде топ мүшелеріне қандай негізгі ережелер белгіленеді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q26" value="A"> A) өздерін сырттан қатаң бақылауға алынғандай сезінбей, тәуекелге баруға мүмкіндік беретін ережелер</label>
+              <label class="option"><input type="radio" name="q26" value="B"> B) сабақ мазмұнын тексеру кестесін ресми бекітетін ережелер</label>
+              <label class="option"><input type="radio" name="q26" value="C"> C) оқушылардың бағаларын бірдей үлгіде салыстыратын ережелер</label>
+              <label class="option"><input type="radio" name="q26" value="D"> D) пәндік кабинеттердегі ресурстарды тіркейтін ережелер</label>
+              <label class="option"><input type="radio" name="q26" value="E"> E) қорытынды құжаттарды мұрағатқа тапсыратын ережелер</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: A.</strong>
+              Нұсқаулықта топ мүшелеріне өздерін сырттан қатаң бақылауға алынғандай сездірмей, тәуекелге бел бууға мүмкіндік беретін негізгі ережелер белгілеу ұсынылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="D">
+            <h4>7. Lesson Study-де қаралатын мәселе қалай белгіленеді?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q27" value="A"> A) оқу жылының есептік кезеңіне қарай</label>
+              <label class="option"><input type="radio" name="q27" value="B"> B) мектептің материалдық мүмкіндігіне қарай</label>
+              <label class="option"><input type="radio" name="q27" value="C"> C) сабақ кестесінің бос уақытына қарай</label>
+              <label class="option"><input type="radio" name="q27" value="D"> D) мектептің, сыныптың немесе жас мөлшеріндегі топтың қажеттіліктері негізінде</label>
+              <label class="option"><input type="radio" name="q27" value="E"> E) пәндік кабинет саны мен оқу құралдарына қарай</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: D.</strong>
+              Lesson Study-де қаралатын мәселе белгілі бір мектептің, сыныптың немесе белгілі жас мөлшеріндегі топтың қажеттіліктері негізінде белгіленеді.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="C">
+            <h4>8. Бірінші Lesson Study-ді жоспарлау үшін мұғалімдерге қанша уақыт бөлу ұсынылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q28" value="A"> A) он бес минут</label>
+              <label class="option"><input type="radio" name="q28" value="B"> B) отыз минут</label>
+              <label class="option"><input type="radio" name="q28" value="C"> C) кем дегенде бір сағат</label>
+              <label class="option"><input type="radio" name="q28" value="D"> D) екі оқу күні</label>
+              <label class="option"><input type="radio" name="q28" value="E"> E) бір оқу тоқсаны</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: C.</strong>
+              Нұсқаулықта бірінші Lesson Study-ді жоспарлау үшін мұғалімдерге арнайы уақыт, кем дегенде бір сағат бөлу ұсынылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="B">
+            <h4>9. Lesson Study аяқталғаннан кейін талқылауды қашан ұйымдастыру ұсынылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q29" value="A"> A) оқу жылының соңындағы қорытынды жиналыста</label>
+              <label class="option"><input type="radio" name="q29" value="B"> B) бірден немесе көп уақыт өткізбей</label>
+              <label class="option"><input type="radio" name="q29" value="C"> C) келесі тоқсан басталғаннан кейін</label>
+              <label class="option"><input type="radio" name="q29" value="D"> D) сыртқы бағалау аяқталған соң</label>
+              <label class="option"><input type="radio" name="q29" value="E"> E) оқу бағдарламасы толық аяқталған кезде</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: B.</strong>
+              Lesson Study аяқталғаннан кейін бірден немесе көп уақыт өткізбей талқылау жүргізуді қамтамасыз ету ұсынылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="E">
+            <h4>10. Lesson Study жүргізетін топқа нәтижелерін әріптестеріне көрсету үшін қандай мүмкіндік ұсынылады?</h4>
+            <div class="options">
+              <label class="option"><input type="radio" name="q30" value="A"> A) оқу кабинетін қайта жабдықтау мүмкіндігі</label>
+              <label class="option"><input type="radio" name="q30" value="B"> B) пәндік журналдарды салыстыру мүмкіндігі</label>
+              <label class="option"><input type="radio" name="q30" value="C"> C) тоқсандық есепті қайта жазу мүмкіндігі</label>
+              <label class="option"><input type="radio" name="q30" value="D"> D) оқулықтар тізімін өзгерту мүмкіндігі</label>
+              <label class="option"><input type="radio" name="q30" value="E"> E) педагогикалық кеңес, коучинг сияқты ортада таныстыру мүмкіндігі</label>
+            </div>
+            <div class="explanation">
+              <strong>Дұрыс жауап: E.</strong>
+              Нұсқаулықта Lesson Study жүргізетін топқа нәтижелерін әріптестеріне көрсету үшін педагогикалық кеңес, коучинг және басқа форматтар ұсынылады.
+              <div class="source">Дереккөз: Пит Дадли. Lesson Study: нұсқаулық.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" onclick="checkQuiz('quiz-3')">Нәтижені көрсету</button>
+            <button class="btn btn-soft" onclick="resetQuiz('quiz-3')">Қайта белгілеу</button>
+          </div>
+          <div class="result-box" id="result-quiz-3"></div>
+        </div>
+      </section>
+      
